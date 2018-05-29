@@ -1,0 +1,19 @@
+SoftwareSerial HC06(11,10); #on branche le module au port 11, 10
+int temps=0;
+#int les valeurs qu'on veut lire pour les initialiser
+
+void setup() {
+  Serial.begin(9600);
+  HC06.begin(9600); 
+  temps=millis()+1000
+  #activer les pin des capteurs
+}
+
+void loop()
+{
+  if(HC06.available()){
+    Serial.println(HC06.read());
+  }
+  if(millis() > temps){
+    HC06.write(temperature); #exemple avec température
+    Serial.write(temperature);
